@@ -49,5 +49,22 @@ namespace CQRS_Session1.Tests
 
             Assert.That(updatedUser, Is.EqualTo(expectedUser));
         }
+
+        [Test]
+        public void delete_a_user()
+        {
+            var userName = "User Name";
+            var name = "Surname";
+            var userRepo = new UserRepository();
+            userRepo.CreateUser(userName, name);
+
+            userRepo.Delete(userName);
+
+            Assert.Throws<UserNotFoundException>(() =>
+            {
+                userRepo.FindByUserName(userName);
+            }, "User not found");
+
+        }
     }
 }
