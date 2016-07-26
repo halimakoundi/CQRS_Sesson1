@@ -2,9 +2,17 @@ namespace CQRSWithEvents.Src
 {
     public class PaymentMadeEvent : Event
     {
-        public PaymentMadeEvent(PaymentParams paymentParams)
+        public readonly string EmailAddress;
+
+        public PaymentMadeEvent(string emailAddress)
         {
-            throw new System.NotImplementedException();
+            EmailAddress = emailAddress;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var otherEvent = (PaymentMadeEvent)obj;
+            return EmailAddress == otherEvent.EmailAddress;
         }
     }
 }

@@ -14,7 +14,7 @@
         public void Handles(MakePaymentCommand command)
         {
             _userAccountChecker.Check(command.UserId);
-            _paymentGateway.Pay(command.PaymentParams);
+            _paymentGateway.Pay(command.UserId, command.OrderId, command.Email);
         }
     }
 }

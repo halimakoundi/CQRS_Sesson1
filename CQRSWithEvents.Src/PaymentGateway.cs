@@ -11,10 +11,10 @@
             _externalPaymentProvider = externalPaymentProvider;
         }
 
-        public virtual void Pay(PaymentParams paymentParams)
+        public virtual void Pay(string userId, string orderId, string userEmail)
         {
-            _externalPaymentProvider.Pay(paymentParams);
-            _eventPublisher.Publish();
+            _externalPaymentProvider.Pay(userId, orderId);
+            _eventPublisher.Publish(new PaymentMadeEvent(userEmail));
         }
     }
 }

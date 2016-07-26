@@ -6,7 +6,7 @@
         public PaymentParams(string userId, string orderId)
         {
             OrderId = orderId;
-            UserId = userId;
+            UserId = userId;    
         }
 
         public string OrderId { get; }

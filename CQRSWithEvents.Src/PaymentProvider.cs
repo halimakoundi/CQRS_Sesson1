@@ -2,6 +2,6 @@ namespace CQRSWithEvents.Src
 {
     public interface PaymentProvider
     {
-        void Pay(PaymentParams paymentParams);
+        void Pay(string userId, string orderId);
     }
 }

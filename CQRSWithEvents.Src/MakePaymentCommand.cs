@@ -2,12 +2,15 @@
 {
     public class MakePaymentCommand
     {
-        public PaymentParams PaymentParams { get; set; }
-        public string UserId => PaymentParams.UserId;
+        public string OrderId { get; }
+        public string UserId { get; }
+        public string Email { get; set; }
 
-        public MakePaymentCommand(PaymentParams paymentParams)
+        public MakePaymentCommand(string userId, string orderId, string email)
         {
-            PaymentParams = paymentParams;
+            OrderId = orderId;
+            UserId = userId; ;
+            Email = email;
         }
     }
 }

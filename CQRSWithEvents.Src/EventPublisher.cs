@@ -1,32 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CQRSWithEvents.Src
 {
     public class EventPublisher
     {
-        private readonly Clock _clock;
+        private readonly Dictionary<Type, Handler> _subscribers =
+                        new Dictionary<Type, Handler>();
 
-        public EventPublisher(Clock clock)
+        public void AddHandler<T>(Type type, Handler handler) where T:Event
         {
-            _clock = clock;
+            _subscribers.Add(type, handler);
         }
 
-        public delegate void PaymentHasBeenMade(PaymentEventArgs args);
-
-        public event PaymentHasBeenMade PaymentMade;
-
-        public void Publish()
+        public void Publish(Event e)
         {
-            OnPaymentMade(new PaymentEventArgs("Payment has been successful."));
+            _subscribers[e.GetType()].Handle(e);
         }
 
-        private void OnPaymentMade(PaymentEventArgs paymentMadeArgs)
-        {
-            PaymentHasBeenMade handler = PaymentMade;
-            if (handler == null) return;
-            paymentMadeArgs.Message += $" At {_clock.Now}";
-
-            handler(paymentMadeArgs);
-        }
     }
 }

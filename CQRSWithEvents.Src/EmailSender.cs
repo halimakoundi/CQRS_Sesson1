@@ -1,10 +1,12 @@
+using System;
+
 namespace CQRSWithEvents.Src
 {
     public class EmailSender
     {
-        public virtual void send()
+        public virtual void Send(string emailAddress)
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine($"Email has been sent to {emailAddress}");
         }
     }
 }

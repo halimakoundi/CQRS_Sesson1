@@ -48,11 +48,13 @@
     <Compile Include="EmailSender.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventPublisher.cs" />
+    <Compile Include="Handler.cs" />
     <Compile Include="MakePaymentCommand.cs" />
     <Compile Include="MakePaymentCommandHandler.cs" />
     <Compile Include="PaymentEventArgs.cs" />
     <Compile Include="PaymentGateway.cs" />
     <Compile Include="PaymentMadeEvent.cs" />
+    <Compile Include="PaymentMadeHandler.cs" />
     <Compile Include="PaymentParams.cs" />
     <Compile Include="PaymentProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
